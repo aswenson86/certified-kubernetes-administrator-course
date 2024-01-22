@@ -1,0 +1,59 @@
+# Kubernetes uses YAML files as inputs as creations for infrastructure 
+# These files always contain 4 root(top) level properties which are as follows
+apiVersion: #string
+kind: #string
+metadata: #Dictionary
+
+
+
+
+spec:
+# These fields are required so you must always have these 4 fields in your kubernetes files
+# Different Kind Types & API Version Matches
+apiVersion: v1
+kind: POD
+#
+apiVersion: v1
+kind: Service
+#
+apiVersion: apps/v1
+kind: ReplicaSet
+#
+apiVersion: apps/v1
+kind: Deployment
+#
+# MetaData Example for a Pod
+# You must use expected format for defined primary fields
+# For labels you can use whatever you want.
+# Parent, Children, and Siblings Structure. Spaces don't matter but must match on the lines
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod #string
+  labels: #dictionary
+    app: myapp #string
+    type: front-end #back-end #database
+# 
+# Spec Example for a Pod
+# Documentation sections will have correct format for each different kind
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod #string
+  labels: #dictionary
+    app: myapp #string
+    type: front-end #back-end #database
+
+spec: #dictionary
+  containers: #list/array
+    - name: nginx-container #dash indicates first item in the list
+      image: nginx
+
+# run kubectl create -f pod-definition.yml 
+# kubernetes will then create the pod
+
+# how do you see the pod?
+# kubectl get pods
+
+# get information about the running pod
+# kubectl describe pod myapp-pod

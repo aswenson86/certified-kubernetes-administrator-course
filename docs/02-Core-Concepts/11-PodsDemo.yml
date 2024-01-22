@@ -1,0 +1,26 @@
+# Create a YAML file with the pod specifications inside of it
+# An editor with YAML support is helpful (notepad ++ or VIM in linux)
+
+# linux commands
+# vim pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels: 
+    app: nginx
+    tier: frontend
+spec:
+  containers:
+    - name: nginx
+      image: nginx #dockerhub image name, or specify full path of custom repo here.
+    - name: busybox # another - to say start a new list
+      image: busybox 
+
+# linux commands
+# cat pod.yaml (check formatting of the file)
+# kubectl apply -f pod.yaml
+# "pod/nginx created"
+# kubectl get pods
+# kubectl describe pod nginx
+# kubectl delete pod webapp
